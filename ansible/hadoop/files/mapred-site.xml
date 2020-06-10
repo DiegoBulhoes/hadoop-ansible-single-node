@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+
+<configuration>
+<property>
+     <name>mapreduce.framework.name</name>
+     <value>yarn</value>
+</property>
+<property>
+        <name>mapreduce.application.classpath</name>
+        <value>/home/hadoop/hadoop-3.2.1/share/hadoop/mapreduce/*:/home/denis.cardoso/hadoop-3.2.1/share/hadoop/mapreduce/lib/*</value>
+</property>
+
+</configuration>

@@ -1,0 +1,30 @@
+---
+# tasks file for hadoop
+- hosts: all
+  become: true
+  tasks:
+    - name: Install packages
+      apt:
+        name: "{{ packages }}"
+        state: present
+        update_cache: yes
+      vars:
+        packages:
+          - vim
+          - openjdk-8-jdk
+
+    - name: User hadoop
+      import_tasks: ./user-hadoop.yml
+
+    - name: Dowload hadoop
+      import_tasks: ./dowload-hadoop.yml
+
+    - name: Config hadoop
+      import_tasks: ./config-hadoop.yml
+
+    - name: Format namenode
+      become_user: hadoop
+      command: /home/hadoop/hadoop-3.2.1/bin/hdfs namenode -format
+
+    - name: Start Services - Hadoop
+      import_tasks: ./start-srv.yml

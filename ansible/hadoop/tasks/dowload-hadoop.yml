@@ -1,0 +1,7 @@
+- name: Get files - Hadoop verion 3.2.1
+  unarchive:
+    src: http://ftp.unicamp.br/pub/apache/hadoop/common/stable/hadoop-3.2.1.tar.gz
+    dest: /home/hadoop/
+    remote_src: yes
+    owner: hadoop
+    group: hadoop

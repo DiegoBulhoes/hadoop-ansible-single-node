@@ -1,0 +1,76 @@
+- name: Insert env Hadoop
+  blockinfile:
+    path: /home/hadoop/.bashrc
+    block: |
+      export HADOOP_HOME=/home/hadoop/hadoop-3.2.1
+      export HADOOP_MAPRED_HOME=/home/hadoop/hadoop-3.2.1
+      export HADOOP_COMMON_HOME=/home/hadoop/hadoop-3.2.1
+      export HADOOP_HDFS_HOME=/home/hadoop/hadoop-3.2.1
+      export HADOOP_YARN_HOME=/home/hadoop/hadoop-3.2.1
+      export HADOOP_CONF_DIR=/home/hadoop/hadoop-3.2.1/etc/hadoop
+
+- name: Create a directory "input"
+  file:
+    path: /home/hadoop/hadoop-3.2.1/input
+    state: directory
+    owner: hadoop
+    group: hadoop
+
+- name: Copy Config - Hadoop
+  copy:
+    src: ../files/hadoop-env.sh
+    dest: /home/hadoop/hadoop-3.2.1/etc/hadoop
+    owner: hadoop
+    group: hadoop
+
+- name: Add env - Use hadoop-env.sh
+  copy:
+    src: ../files/hadoop-env.sh
+    dest: /etc/profile.d/hadoop_env.sh
+
+- name: Add env - Use env.sh
+  copy:
+    src: ../files/env.sh
+    dest: /etc/profile.d/hadoop_env.sh
+
+- name: The unzipped conf directory to "input" directory, then finds and displays all matches for the specified regular expression. The output is saved in the "output" directory.
+  shell: source /home/hadoop/.bashrc && /home/hadoop/hadoop-3.2.1/bin/hadoop jar /home/hadoop/hadoop-3.2.1/share/hadoop/mapreduce/hadoop-mapreduce-examples-3.2.1.jar grep /home/hadoop/hadoop-3.2.1/input /home/hadoop/hadoop-3.2.1/output ‘dfs[a-z.]+’
+  args:
+    executable: /bin/bash
+
+- name: Copy files *.xml to input
+  shell: cp /home/hadoop/hadoop-3.2.1/etc/hadoop/*.xml /home/hadoop/hadoop-3.2.1/input
+
+- name: Copy Config - Hadoop
+  copy:
+    src: ../files/
+    dest: /home/hadoop/hadoop-3.2.1/etc/hadoop
+    owner: hadoop
+    group: hadoop
+
+- name: Create a directory "input"
+  file:
+    path: "{{ item }}"
+    state: directory
+    owner: hadoop
+    group: hadoop
+  loop:
+    - /home/hadoop/hadoop-3.2.1/tmp/hdfs/namenode
+    - /home/hadoop/hadoop-3.2.1/tmp/hdfs/datanode
+    - /home/hadoop/hadoop-3.2.1/logs
+    - /tmp/hadoop-hadoop/dfs/name
+
+- name: Change hadoop files permission
+  shell: chown -R hadoop:hadoop /home/hadoop/
+
+- name: Format namenode
+  become_user: hadoop
+  command: /home/hadoop/hadoop-3.2.1/bin/hdfs namenode -format
+
+- name: Start dfs
+  become_user: hadoop
+  shell: /home/hadoop/hadoop-3.2.1/sbin/start-dfs.sh
+
+- name: Start Yarn
+  become_user: hadoop
+  shell: /home/hadoop/hadoop-3.2.1/sbin/start-yarn.sh
