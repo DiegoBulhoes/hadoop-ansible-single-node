@@ -8,7 +8,7 @@
 </property>
 <property>
         <name>mapreduce.application.classpath</name>
-        <value>/home/hadoop/hadoop-3.2.1/share/hadoop/mapreduce/*:/home/denis.cardoso/hadoop-3.2.1/share/hadoop/mapreduce/lib/*</value>
+        <value>/home/hadoop/hadoop-3.2.1/share/hadoop/mapreduce/*:/home/hadoop/hadoop-3.2.1/share/hadoop/mapreduce/lib/*</value>
 </property>
 
 </configuration>
