@@ -55,7 +55,7 @@
 
 # Location of Hadoop.  By default, Hadoop will attempt to determine
 # this location based upon its execution path.
-export HADOOP_HOME=/home/hadoop/hadoop-3.2.1
+export HADOOP_HOME={{hadoop_home}}
 
 # Location of Hadoop's configuration information.  i.e., where this
 # file is living. If this is not defined, Hadoop will attempt to
@@ -415,4 +415,4 @@ export HADOOP_OS_TYPE=${HADOOP_OS_TYPE:-$(uname -s)}
 #
 # For example, to limit who can execute the namenode command,
 # export HDFS_NAMENODE_USER=hdfs
-export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
+export JAVA_HOME={{java_home}}

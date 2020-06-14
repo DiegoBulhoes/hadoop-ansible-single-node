@@ -1,3 +1,0 @@
----
-# defaults file for hadoop
-- include: ../tasks/main.yml 

@@ -1,5 +1,11 @@
 # Hadoop
 
+Para iniciar o lab será necessario criar as _keys_ dentro do diretorio key:
+
+```shell
+ ssh-keygen -q -t rsa -f id_rsa
+```
+
 Para iniciar o lab basta execultar o seguinte comando:
 
 ```shell

@@ -1,7 +1,0 @@
-- name: Start dfs
-  become_user: hadoop
-  shell: /home/hadoop/hadoop-3.2.1/sbin/start-dfs.sh
-
-- name: Start Yarn
-  become_user: hadoop
-  shell: /home/hadoop/hadoop-3.2.1/sbin/start-yarn.sh

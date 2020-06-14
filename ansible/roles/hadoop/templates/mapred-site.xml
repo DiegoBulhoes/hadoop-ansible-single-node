@@ -8,7 +8,11 @@
 </property>
 <property>
         <name>mapreduce.application.classpath</name>
+<<<<<<< Updated upstream:ansible/hadoop/files/mapred-site.xml
         <value>/home/hadoop/hadoop-3.2.1/share/hadoop/mapreduce/*:/home/hadoop/hadoop-3.2.1/share/hadoop/mapreduce/lib/*</value>
+=======
+        <value>{{hadoop_home}}/share/hadoop/mapreduce/*:{{hadoop_home}}/share/hadoop/mapreduce/lib/*</value>
+>>>>>>> Stashed changes:ansible/roles/hadoop/templates/mapred-site.xml
 </property>
 
 </configuration>

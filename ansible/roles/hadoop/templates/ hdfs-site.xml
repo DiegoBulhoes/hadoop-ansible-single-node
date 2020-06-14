@@ -7,10 +7,10 @@
 </property>
 <property>
      <name>dfs.namenode.name.dir</name>
-     <value>/home/hadoop/hadoop-3.2.1/tmp/hdfs/namenode</value>
+     <value>{{hadoop_home}}/tmp/hdfs/namenode</value>
 </property>
 <property>
      <name>dfs.datanode.data.dir</name>
-     <value>/home/hadoop/hadoop-3.2.1/tmp/hdfs/datanode</value>
+     <value>{{hadoop_home}}/tmp/hdfs/datanode</value>
 </property>
 </configuration>
